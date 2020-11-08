@@ -1,7 +1,6 @@
 var center = [58.65, 25.06];
 var map = L.map('map', {
     'center': [0, 0],
-    'zoom': 0,
     'layers': [
       L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
         'attribution': 'Map data &copy; OpenStreetMap contributors'
@@ -50,7 +49,7 @@ realtime.on('update', function(e) {
             realtime.getLayer(fId).getPopup().setContent(popupContent(fId));
         };
 
-    map.fitBounds(realtime.getBounds(), {maxZoom: 3});
+    map.fitBounds(realtime.getBounds());
 
     Object.keys(e.enter).forEach(bindFeaturePopup);
     Object.keys(e.update).forEach(updateFeaturePopup);
